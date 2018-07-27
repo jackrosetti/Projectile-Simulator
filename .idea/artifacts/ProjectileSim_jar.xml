@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ProjectileSim:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProjectileSim_jar</output-path>
+    <root id="archive" name="ProjectileSim.jar">
+      <element id="module-output" name="ProjectileSim" />
+    </root>
+  </artifact>
+</component>
