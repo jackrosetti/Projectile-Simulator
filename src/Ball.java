@@ -1,136 +1,87 @@
 import java.awt.*;
 
-public class Ball {
-    double xPos;
-    double yPos;
-    double aX;
-    double aY;
-    double height;
-    double xVelocity;
-    double yVelocity;
-    double xI;
-    double yI;
-    double timeCount = 0;
-    double timeCurrent = 0;
+// - y means up
+// + x means forward
+class Ball {
+    double dblX;
+    double dblY;
+    double dblAx;
+    double dblAy;
+    double dblH;
+    double dblVx;
+    double dblVy;
+    double dblXi;
+    double dblYi;
+    double dblTimeCount = 0;
+    double dblTimeCurrent = 0;
 
-    public Ball(double X, double y, double h, double vx, double vy, double ax, double ay) {
-        xPos = X / 10;
-        yPos = y / 10;
-        height = h;
-        aX = ax;
-        aY = ay;
-        xVelocity = vx;
-        yVelocity = vy;
-        xI = xPos;
-        yI = yPos;
-        timeCurrent = 0.01;
+
+    public double getX() {
+        return dblX;
     }
 
-    public void reset(double x, double y, double vx, double vy) {
+    public double getY() {
+        return dblY;
+    }
 
-        xPos = x;
-        yPos = y;
-        xVelocity = vx;
-        yVelocity = vy;
-        timeCount = 0;
+    public double getAx() {
+        return dblAx;
+    }
 
+    public double getAy() {
+        return dblAy;
+    }
+
+    public double getH() {
+        return dblH;
     }
 
     public void move() {
 
-        timeCount += timeCurrent;
+        dblTimeCount += dblTimeCurrent;
 
-        if (timeCount == timeCurrent) {
-            yPos = yI + yVelocity * timeCurrent + .5 * aY * timeCurrent * timeCurrent;
-            xPos = xI + xVelocity * timeCurrent + .5 * aX * timeCurrent * timeCurrent;
+        if (dblTimeCount == dblTimeCurrent) {
+            dblY = dblYi + dblVy * dblTimeCurrent + .5 * dblAy * dblTimeCurrent * dblTimeCurrent;
+            dblX = dblXi + dblVx * dblTimeCurrent + .5 * dblAx * dblTimeCurrent * dblTimeCurrent;
         } else {
-            yVelocity = yVelocity + aY * timeCurrent;
-            xVelocity = xVelocity + aX * timeCurrent;
-            yPos += yVelocity * timeCurrent + .5 * aY * timeCurrent * timeCurrent;
-            xPos += xVelocity * timeCurrent + .5 * aX * timeCurrent * timeCurrent;
+            dblVy = dblVy + dblAy * dblTimeCurrent;
+            dblVx = dblVx + dblAx * dblTimeCurrent;
+            dblY += dblVy * dblTimeCurrent + .5 * dblAy * dblTimeCurrent * dblTimeCurrent;
+            dblX += dblVx * dblTimeCurrent + .5 * dblAx * dblTimeCurrent * dblTimeCurrent;
 
         }
-        System.out.println("TIME : " + timeCount);
+        System.out.println("TIME : " + dblTimeCount);
     }
 
+    public void draw (Graphics2D g) {
+        g.setColor(Color.RED);
+        g.fillOval((int) (dblX * 10), (int) (dblY * 10), 20, 20);
+        System.out.println(dblX + " X CO");
+        System.out.println(dblY + " Y CO");
 
-    public void draw ( Graphics2D g) {
-        g.setColor(Color.GRAY);
-        g.fillOval((int)(xPos*10),(int)(yPos*10),30,30);
     }
 
+    public void reset(double x, double y, double vx, double vy) {
 
-    public double getxPos() {
-        return xPos;
+        dblX = x;
+        dblY = y;
+        dblVx = vx;
+        dblVy = vy;
+        dblTimeCount = 0;
+
     }
 
-    public void setxPos(double xPos) {
-        this.xPos = xPos;
+    public Ball(double X, double y, double h, double vx, double vy, double ax, double ay) {
+        dblX = X / 10;
+        dblY = y / 10;
+        dblH = h;
+        dblAx = ax;
+        dblAy = ay;
+        dblVx = vx;
+        dblVy = vy;
+        dblXi = dblX;
+        dblYi = dblY;
+        dblTimeCurrent = 0.01;
     }
-
-    public double getyPos() {
-        return yPos;
-    }
-
-    public void setyPos(double yPos) {
-        this.yPos = yPos;
-    }
-
-    public double getaX() {
-        return aX;
-    }
-
-    public void setaX(double aX) {
-        this.aX = aX;
-    }
-
-    public double getaY() {
-        return aY;
-    }
-
-    public void setaY(double aY) {
-        this.aY = aY;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getxVelocity() {
-        return xVelocity;
-    }
-
-    public void setxVelocity(double xVelocity) {
-        this.xVelocity = xVelocity;
-    }
-
-    public double getyVelocity() {
-        return yVelocity;
-    }
-
-    public void setyVelocity(double yVelocity) {
-        this.yVelocity = yVelocity;
-    }
-
-    public double getxI() {
-        return xI;
-    }
-
-    public void setxI(double xI) {
-        this.xI = xI;
-    }
-
-    public double getyI() {
-        return yI;
-    }
-
-    public void setyI(double yI) {
-        this.yI = yI;
-    }
-
 
 }
