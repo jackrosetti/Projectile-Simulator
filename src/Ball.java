@@ -10,9 +10,48 @@ public class Ball {
     double yVelocity;
     double xI;
     double yI;
-    double dblTimeCount = 0 ;
-    double dblTimeCurrent=0;
+    double timeCount = 0;
+    double timeCurrent = 0;
 
+    public Ball(double X, double y, double h, double vx, double vy, double ax, double ay) {
+        xPos = X / 10;
+        yPos = y / 10;
+        height = h;
+        aX = ax;
+        aY = ay;
+        xVelocity = vx;
+        yVelocity = vy;
+        xI = xPos;
+        yI = yPos;
+        timeCurrent = 0.01;
+    }
+
+    public void reset(double x, double y, double vx, double vy) {
+
+        xPos = x;
+        yPos = y;
+        xVelocity = vx;
+        yVelocity = vy;
+        timeCount = 0;
+
+    }
+
+    public void move() {
+
+        timeCount += timeCurrent;
+
+        if (timeCount == timeCurrent) {
+            yPos = yI + yVelocity * timeCurrent + .5 * aY * timeCurrent * timeCurrent;
+            xPos = xI + xVelocity * timeCurrent + .5 * aX * timeCurrent * timeCurrent;
+        } else {
+            yVelocity = yVelocity + aY * timeCurrent;
+            xVelocity = xVelocity + aX * timeCurrent;
+            yPos += yVelocity * timeCurrent + .5 * aY * timeCurrent * timeCurrent;
+            xPos += xVelocity * timeCurrent + .5 * aX * timeCurrent * timeCurrent;
+
+        }
+        System.out.println("TIME : " + timeCount);
+    }
 
 
     public void draw ( Graphics2D g) {
