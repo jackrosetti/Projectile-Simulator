@@ -67,12 +67,6 @@ public class Window implements ActionListener, MouseMotionListener,ChangeListene
         this.start.setBounds(1024 - 290, 670, 230, 50);
         this.thepanel1.add(this.start);
         this.start.addActionListener(this);
-//
-//        //STOP BUTTON
-//        this.stop = new JButton ("STOP");
-//        this.stop.setBounds (1024-290,670,100,50);
-//        this.thepanel1.add(this.stop);
-//        this.stop.addActionListener(this);
 
         //RESET BUTTON
         this.reset = new JButton("RESET");

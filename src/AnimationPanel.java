@@ -2,9 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AnimationPanel extends JPanel {
-    //100 SCALE
-    //100 = 1
-    //Properties
+
     boolean blnfirst = true;
     int intHeight;
     int intWidth;
